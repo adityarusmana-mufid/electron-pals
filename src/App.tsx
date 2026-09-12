@@ -18,6 +18,21 @@ const catQuotes = [
   'Zoomies engage!',
   'I identify as a loaf.',
   "Sorry for the cat hair, it's a gift.",
+  'Me-wow, look at that window.',
+  'Six blinks and a tail flick = yes.',
+  'Hiss off, I was napping.',
+  'Sitting on your keyboard: full stack dev.',
+  'The lap is lava. Just kidding, sit down.',
+  'This box was made for me.',
+  'Cat made of the darkest coffee.',
+  'I drink gravity, I am a cat.',
+  'Knocked it over. Again. No regrets.',
+  'Error 404: f?ps not found.',
+  'I purr, therefore I am.',
+  'Customer: give me that 3am speedrun meow.',
+  'Cats do not chase mice in heavy armor.',
+  'A broken clock is right 2 meows a day.',
+  'One biscuit for the tail there, please.',
 ]
 
 const randomItem = <T,>(items: T[]) => items[Math.floor(Math.random() * items.length)]

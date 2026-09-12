@@ -5,7 +5,7 @@ import crypto from 'node:crypto'
 import { execSync } from 'node:child_process'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const projectRoot = path.resolve(__dirname, '../..')
+const projectRoot = path.resolve(__dirname, '..')
 const catsDir = path.join(projectRoot, 'src/assets/cats')
 const manifestPath = path.join(catsDir, 'manifest.json')
 
