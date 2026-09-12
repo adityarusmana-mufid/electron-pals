@@ -1,16 +1,43 @@
 import { useState } from 'react'
-import { catGifUrl } from './electron'
 import sky from './assets/sky.jpg'
 
+const catModules = import.meta.glob('./assets/cats/cat-*.gif', { eager: true }) as Record<
+  string,
+  { default: string }
+>
+const catGifs = Object.values(catModules).map((module) => module.default)
+
+const catQuotes = [
+  "I'm not lazy, I'm in energy-saving mode.",
+  'Meow means feed me in 12 languages.',
+  'Today is a pawsome day.',
+  'If I fit, I sit.',
+  'I need space to store my catnip.',
+  'Purring is my superpower.',
+  'I dream in catnip and tuna.',
+  'Zoomies engage!',
+  'I identify as a loaf.',
+  "Sorry for the cat hair, it's a gift.",
+]
+
+const randomItem = <T,>(items: T[]) => items[Math.floor(Math.random() * items.length)]
+
 export default function App() {
-  const [frame, setFrame] = useState(0)
-  const [status, setStatus] = useState('Sky cat is ready.')
+  const [status, setStatus] = useState(randomItem(catQuotes))
+  const [catSrc, setCatSrc] = useState(() => randomItem(catGifs))
+
+  const refresh = () => {
+    setStatus('Finding another cat...')
+    setCatSrc(randomItem(catGifs))
+  }
 
   return (
     <main className="widget">
       <div className="drag-bar">
         <span>TINY CLOUD COMPANION</span>
-        <button type="button" aria-label="Close widget" onClick={() => window.close()}>x</button>
+        <button type="button" aria-label="Close widget" onClick={() => window.close()}>
+          x
+        </button>
       </div>
       <section className="sky" aria-label="Animated cat electron">
         <img className="sky-bg" src={sky} alt="" aria-hidden="true" />
@@ -20,9 +47,9 @@ export default function App() {
           <div className="orbit orbit-c"><i /></div>
           <div className="nucleus">
             <img
-              src={catGifUrl(frame)}
+              src={catSrc}
               alt="An animated random cat"
-              onLoad={() => setStatus('Cat core stable. Meow.')}
+              onLoad={() => setStatus(randomItem(catQuotes))}
               onError={() => setStatus('Cat signal lost. Try another one.')}
             />
           </div>
@@ -30,7 +57,9 @@ export default function App() {
       </section>
       <div className="controls">
         <p aria-live="polite">{status}</p>
-        <button type="button" onClick={() => { setStatus('Finding another cat...'); setFrame((value) => value + 1) }}>Refresh cat</button>
+        <button type="button" onClick={refresh}>
+          Refresh cat
+        </button>
       </div>
     </main>
   )
