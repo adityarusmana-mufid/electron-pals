@@ -32,7 +32,7 @@ function nextCatNumber(existingFiles) {
 
 function downloadCat(targetPath) {
   const url = `https://cataas.com/cat/gif?width=120&height=120&t=${Date.now()}`
-  fs.writeFileSync(targetPath, execSync(`curl -L "${url}"`, { encoding: 'utf8' }))
+  fs.writeFileSync(targetPath, execSync(`curl -L "${url}"`))
 }
 
 const manifest = loadManifest()
