@@ -10,6 +10,7 @@ export const widgetWindowOptions = {
   x: undefined,
   y: 0,
   backgroundColor: '#bce8ff',
+  icon: join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'assets', 'icon.png'),
   webPreferences: {
     contextIsolation: true,
     nodeIntegration: false,
