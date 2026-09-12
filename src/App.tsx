@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import sky from './assets/sky.jpg'
 
 const catModules = import.meta.glob('./assets/cats/cat-*.gif', { eager: true }) as Record<
@@ -35,16 +35,33 @@ const catQuotes = [
   'One biscuit for the tail there, please.',
 ]
 
-const randomItem = <T,>(items: T[]) => items[Math.floor(Math.random() * items.length)]
+function useCycle<T>(items: T[]) {
+  const deck = useRef<T[]>([])
+
+  const next = () => {
+    if (deck.current.length === 0) {
+      deck.current = [...items]
+      for (let i = deck.current.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[deck.current[i], deck.current[j]] = [deck.current[j], deck.current[i]]
+      }
+    }
+    return deck.current.pop() as T
+  }
+
+  return next
+}
 
 export default function App() {
-  const [status, setStatus] = useState(randomItem(catQuotes))
-  const [catSrc, setCatSrc] = useState(() => randomItem(catGifs))
+  const nextCat = useCycle(catGifs)
+  const nextQuote = useCycle(catQuotes)
+  const [status, setStatus] = useState(nextQuote)
+  const [catSrc, setCatSrc] = useState(nextCat)
   const [pinned, setPinned] = useState(false)
 
   const refresh = () => {
     setStatus('Finding another cat...')
-    setCatSrc(randomItem(catGifs))
+    setCatSrc(nextCat())
   }
 
   const togglePin = () => {
@@ -82,7 +99,7 @@ export default function App() {
             <img
               src={catSrc}
               alt="An animated random cat"
-              onLoad={() => setStatus(randomItem(catQuotes))}
+              onLoad={() => setStatus(nextQuote())}
               onError={() => setStatus('Cat signal lost. Try another one.')}
             />
           </div>
