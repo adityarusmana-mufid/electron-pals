@@ -8,6 +8,6 @@ describe('App', () => {
 
     expect(page).toContain('TINY CLOUD COMPANION')
     expect(page).toContain('Close widget')
-    expect(page).toContain('https://cataas.com/cat/gif?width=180&amp;height=180&amp;t=0')
+    expect(page).toContain('https://cataas.com/cat/gif?width=240&amp;height=240&amp;t=0')
   })
 })

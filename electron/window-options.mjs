@@ -1,6 +1,6 @@
 export const widgetWindowOptions = {
-  width: 360,
-  height: 520,
+  width: 300,
+  height: 420,
   frame: false,
   resizable: false,
   alwaysOnTop: false,

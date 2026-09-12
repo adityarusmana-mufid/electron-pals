@@ -3,7 +3,7 @@ import { catGifUrl } from './electron'
 
 export default function App() {
   const [frame, setFrame] = useState(0)
-  const [status, setStatus] = useState('A cloud-charged cat is ready.')
+  const [status, setStatus] = useState('Sky cat is ready.')
 
   return (
     <main className="widget">
@@ -12,9 +12,6 @@ export default function App() {
         <button type="button" aria-label="Close widget" onClick={() => window.close()}>x</button>
       </div>
       <section className="sky" aria-label="Animated cat electron">
-        <div className="sun" />
-        <div className="cloud cloud-one" />
-        <div className="cloud cloud-two" />
         <div className="electron">
           <div className="orbit orbit-a"><i /></div>
           <div className="orbit orbit-b"><i /></div>
