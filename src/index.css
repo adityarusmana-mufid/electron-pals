@@ -58,15 +58,16 @@ button {
   flex: 1;
   overflow: hidden;
   border-block: 4px solid #315178;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .electron {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
   width: 240px;
   aspect-ratio: 1;
-  transform: translate(-50%, -50%);
+  transform: none;
 }
 
 .orbit {
