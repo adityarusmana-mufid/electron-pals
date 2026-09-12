@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { catGifUrl } from './electron'
+import sky from './assets/sky.jpg'
 
 export default function App() {
   const [frame, setFrame] = useState(0)
@@ -12,6 +13,7 @@ export default function App() {
         <button type="button" aria-label="Close widget" onClick={() => window.close()}>x</button>
       </div>
       <section className="sky" aria-label="Animated cat electron">
+        <img className="sky-bg" src={sky} alt="" aria-hidden="true" />
         <div className="electron">
           <div className="orbit orbit-a"><i /></div>
           <div className="orbit orbit-b"><i /></div>
