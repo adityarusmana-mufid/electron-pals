@@ -25,19 +25,37 @@ const randomItem = <T,>(items: T[]) => items[Math.floor(Math.random() * items.le
 export default function App() {
   const [status, setStatus] = useState(randomItem(catQuotes))
   const [catSrc, setCatSrc] = useState(() => randomItem(catGifs))
+  const [pinned, setPinned] = useState(false)
 
   const refresh = () => {
     setStatus('Finding another cat...')
     setCatSrc(randomItem(catGifs))
   }
 
+  const togglePin = () => {
+    const next = !pinned
+    setPinned(next)
+    window.electronPals?.pin(next)
+  }
+
   return (
     <main className="widget">
       <div className="drag-bar">
         <span>TINY CLOUD COMPANION</span>
-        <button type="button" aria-label="Close widget" onClick={() => window.close()}>
-          x
-        </button>
+        <span className="drag-actions">
+          <button
+            type="button"
+            className={pinned ? 'pin pinned' : 'pin'}
+            aria-label="Pin widget to top"
+            aria-pressed={pinned}
+            onClick={togglePin}
+          >
+            ⌃
+          </button>
+          <button type="button" aria-label="Close widget" onClick={() => window.close()}>
+            x
+          </button>
+        </span>
       </div>
       <section className="sky" aria-label="Animated cat electron">
         <img className="sky-bg" src={sky} alt="" aria-hidden="true" />

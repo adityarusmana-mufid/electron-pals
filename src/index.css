@@ -51,6 +51,24 @@ button {
   font-size: 8px;
 }
 
+.drag-actions {
+  display: flex;
+  gap: 4px;
+  -webkit-app-region: no-drag;
+}
+
+.drag-bar .drag-actions button {
+  -webkit-app-region: no-drag;
+}
+
+.drag-bar .pin {
+  font-size: 10px;
+}
+
+.drag-bar .pin.pinned {
+  background: #ff9eb5;
+}
+
 .sky {
   position: relative;
   flex: 1;

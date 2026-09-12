@@ -1,3 +1,6 @@
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
+
 export const widgetWindowOptions = {
   width: 230,
   height: 280,
@@ -11,5 +14,6 @@ export const widgetWindowOptions = {
     contextIsolation: true,
     nodeIntegration: false,
     sandbox: true,
+    preload: join(dirname(fileURLToPath(import.meta.url)), 'preload.cjs'),
   },
 }

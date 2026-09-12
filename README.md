@@ -4,9 +4,10 @@ A tiny pixel-art Electron desktop widget powered by animated cats.
 
 ## What it is
 
-- Fixed-size frameless Electron widget: `300×420`
+- Fixed-size frameless Electron widget: `230×280`
 - Pastel pixel-sky background with local cat GIF library
 - Random cat quote on every refresh
+- Pin toggle keeps the widget above other windows
 - Works offline once built
 
 ## Run it

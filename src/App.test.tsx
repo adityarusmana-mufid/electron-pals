@@ -8,6 +8,7 @@ describe('App', () => {
 
     expect(page).toContain('TINY CLOUD COMPANION')
     expect(page).toContain('Close widget')
+    expect(page).toContain('Pin widget to top')
     expect(page).toMatch(/\/src\/assets\/cats\/cat-\d+\.gif/)
   })
 })
